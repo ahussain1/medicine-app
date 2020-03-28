@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controller.DrugSummaryActivity">
+
+    <TextView
+        android:layout_width="231dp"
+        android:layout_height="37dp"
+        android:id="@+id/drugName" tools:text="Acetaminophen"
+        android:textStyle="bold" android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp" android:layout_marginTop="24dp"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutLabel"
+        tools:text="Acetaminophen is a pain reliever and a fever reducer.  Acetaminophen is used to treat mild to moderate and pain, to treat moderate to severe pain in conjunction with opiates, or to reduce fever. Common conditions that acetaminophen treats include headache, muscle aches, arthritis, backache, toothaches, colds, and fevers.  Acetaminophen may also be used for purposes not listed in this medication guide. It is typically used orally, but can be given intravenously.  " />
+
+    <TextView
+        android:text="About"
+        android:layout_width="60dp"
+        android:layout_height="18dp"
+        android:id="@+id/aboutLabel" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp" android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/drugName"/>
+
+    <TextView
+        android:text="Side Effects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sideEffectsLabel" android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/description" app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="8dp" android:layout_marginStart="8dp"/>
+
+    <TextView
+        android:id="@+id/sideEffects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sideEffectsLabel"
+        tools:text="The side effects of Acetaminophen is liver failure and death" />
+
+    <TextView
+        android:text="Brand Names"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/brandNameLabel" app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginTop="23dp"
+        app:layout_constraintTop_toBottomOf="@+id/sideEffects"/>
+
+    <TextView
+        android:id="@+id/brandName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brandNameLabel"
+        tools:text="Tylenol, Paracemetol" />
+
+    <TextView
+        android:text="Usage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/usageLabel"
+        app:layout_constraintTop_toBottomOf="@+id/brandName" android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"/>
+
+    <TextView
+        android:id="@+id/usage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usageLabel"
+        tools:text="For adults, take two twice a day" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
