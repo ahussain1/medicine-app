@@ -2,6 +2,10 @@ package com.example.banglapharmacy.Controller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
+import android.widget.TextView
+import androidx.core.text.HtmlCompat
+import androidx.core.text.parseAsHtml
 import com.example.banglapharmacy.Model.Drug
 import com.example.banglapharmacy.R
 import kotlinx.android.synthetic.main.activity_drug_summary.*
@@ -21,6 +25,11 @@ class DrugSummaryActivity : AppCompatActivity() {
         description.text = drug?.description
         sideEffects.text = drug?.sideEffects
         usage.text = drug?.usage
-        brandName.text = drug?.brandNames
+        brandName.setHtmlText(drug!!.brandNames)
+
+    }
+
+    fun TextView.setHtmlText(source: String) {
+        this.text = HtmlCompat.fromHtml(source, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 }

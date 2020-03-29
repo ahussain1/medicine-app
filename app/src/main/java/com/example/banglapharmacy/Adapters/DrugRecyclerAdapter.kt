@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.banglapharmacy.Model.Drug
 import com.example.banglapharmacy.R
+import org.w3c.dom.Text
 
 class DrugRecyclerAdapter(val context: Context, val drugsList: List<Drug>, val itemClick: (Drug) -> Unit) : RecyclerView.Adapter<DrugRecyclerAdapter.Holder>() {
 
@@ -26,9 +27,11 @@ class DrugRecyclerAdapter(val context: Context, val drugsList: List<Drug>, val i
 
     inner class Holder(itemView: View, val itemClick: (Drug) -> Unit) : RecyclerView.ViewHolder(itemView) {
         val drugNameField = itemView.findViewById<TextView>(R.id.drugName)
+        val drugShortDescField = itemView.findViewById<TextView>(R.id.drugShortDesc)
 
         fun bindCategory(drug: Drug, context: Context) {
             drugNameField.text = drug.name
+            drugShortDescField.text = drug.description.substring(0, 50)
             itemView.setOnClickListener {
                 itemClick(drug)
             }
