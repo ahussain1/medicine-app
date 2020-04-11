@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuInflater
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                     )
                     drugList.add(drug)
                 }
+
                 filteredList.addAll(drugList)
 
                 adapter = DrugRecyclerAdapter(this, filteredList) { drug ->
