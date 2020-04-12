@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                 for (document in result) {
                     val name = document.id
                     val description = document["description"].toString()
+                    val howToUse = document["how_to_use"].toString()
                     val brandNames = document["brand_names"].toString()
                     val sideEffects = document["side_effects"].toString()
                     val usage = document["usage"].toString()
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("Test", "4321" + sideEffects)
                     val drug = Drug(
                         name,
+                        howToUse,
                         description,
                         brandNames,
                         sideEffects,
