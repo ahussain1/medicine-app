@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "718638891297",
+    "firebase_url": "https://bangla-pharmacy-ddebc.firebaseio.com",
+    "project_id": "bangla-pharmacy-ddebc",
+    "storage_bucket": "bangla-pharmacy-ddebc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718638891297:android:f852a7b4aad6a9f6cfbe60",
+        "android_client_info": {
+          "package_name": "com.example.banglapharmacy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718638891297-ghs4o4hpbhmjkp1rm35opkkjndp1mb5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZI67owaL-oQuWecLYt2-0WHACsdgR88Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "718638891297-ghs4o4hpbhmjkp1rm35opkkjndp1mb5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
