@@ -31,7 +31,7 @@ class DrugRecyclerAdapter(val context: Context, val drugsList: List<Drug>, val i
 
         fun bindCategory(drug: Drug, context: Context) {
             drugNameField.text = drug.name
-            drugShortDescField.text = drug.description.substring(0, 50)
+            drugShortDescField.text = drug.description. substring(0, 90)
             itemView.setOnClickListener {
                 itemClick(drug)
             }

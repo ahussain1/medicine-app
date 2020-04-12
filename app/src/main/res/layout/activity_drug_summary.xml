@@ -7,20 +7,116 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".Controller.DrugSummaryActivity">
 
         <TextView
             android:layout_width="231dp"
             android:layout_height="37dp"
             android:id="@+id/drugName" tools:text="Acetaminophen"
-            android:textStyle="bold" android:textSize="24sp"
+            android:textColor="#12005e"
+            android:textStyle="bold" android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp" android:layout_marginTop="24dp"
             app:layout_constraintTop_toTopOf="parent"/>
 
+        <Button
+            android:id="@+id/smallerFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Smaller"
+            app:layout_constraintBottom_toBottomOf="@+id/drugName"
+            app:layout_constraintEnd_toStartOf="@+id/biggerFont"
+            app:layout_constraintTop_toTopOf="@+id/drugName" />
+
+        <Button
+            android:id="@+id/biggerFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Bigger"
+            app:layout_constraintBottom_toBottomOf="@+id/smallerFont"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/smallerFont" />
+
         <TextView
             android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.578"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionLabel"
+            tools:text="Acetaminophen is a pain reliever and a fever reducer." />
+
+        <TextView
+            android:id="@+id/descriptionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="কার্যকারিতা"
+            android:textColor="#6a1b9a"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/drugName" />
+
+        <TextView
+            android:id="@+id/howToUseLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="ব্যবহার বিধি "
+            android:textStyle="bold"
+            android:textColor="#6a1b9a"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description" />
+
+        <TextView
+            android:id="@+id/howToUse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/howToUseLabel"
+            tools:text="How to use" />
+
+        <TextView
+            android:id="@+id/sideEffectsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="পার্শ্ব প্রতিক্রিয়া"
+            android:textStyle="bold"
+            android:textColor="#6a1b9a"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/howToUse" />
+
+        <TextView
+            android:id="@+id/sideEffects"
             android:layout_width="0dp"
             android:textSize="16sp"
             android:layout_height="wrap_content"
@@ -30,80 +126,98 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.578"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/aboutLabel"
-            tools:text="Acetaminophen is a pain reliever and a fever reducer.  Acetaminophen is used to treat mild to moderate and pain, to treat moderate to severe pain in conjunction with opiates, or to reduce fever. Common conditions that acetaminophen treats include headache, muscle aches, arthritis, backache, toothaches, colds, and fevers.  Acetaminophen may also be used for purposes not listed in this medication guide. It is typically used orally, but can be given intravenously.  " />
+            app:layout_constraintTop_toBottomOf="@+id/sideEffectsLabel"
+            tools:text="Side effects of the drugs" />
 
         <TextView
-            android:text="About"
-            android:layout_width="60dp"
-            android:layout_height="18dp"
-            android:id="@+id/aboutLabel" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/drugName"/>
-
-        <TextView
-            android:id="@+id/howToUseLabel"
+            android:id="@+id/precautionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
-            android:text="How To Use"
+            android:text="সতর্কতা"
+            android:textColor="#6a1b9a"
+            android:textStyle="bold"
+            android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description" />
+            app:layout_constraintTop_toBottomOf="@+id/sideEffects" />
 
         <TextView
-            android:id="@+id/howToUse"
+            android:id="@+id/precaution"
+            android:layout_width="0dp"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/precautionLabel"
+            tools:text="Precaution" />
+
+        <TextView
+            android:id="@+id/notesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="নোট"
+            android:textColor="#6a1b9a"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/precaution"/>
+
+        <TextView
+            android:id="@+id/notes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Additional Notes"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notesLabel"/>
+
+        <TextView
+            android:id="@+id/storageLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
+            android:text="সংরক্ষণ"
+            android:textColor="#6a1b9a"
+            android:textStyle="bold"
+            android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/howToUseLabel"
-            tools:text="The side effects of Acetaminophen is liver failure and death" />
+            app:layout_constraintTop_toBottomOf="@+id/notes"/>
 
         <TextView
-            android:text="Brand Names"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/brandNameLabel" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginTop="23dp"
-            app:layout_constraintTop_toBottomOf="@+id/howToUse"/>
-
-        <TextView
-            android:id="@+id/brandName"
-            android:layout_width="wrap_content"
+            android:id="@+id/storage"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Storage"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/brandNameLabel"
-            tools:text="Tylenol, Paracemetol" />
-
-        <TextView
-            android:text="Usage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/usageLabel"
-            app:layout_constraintTop_toBottomOf="@+id/brandName" android:layout_marginTop="32dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"/>
-
-        <TextView
-            android:id="@+id/usage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usageLabel"
-            tools:text="For adults, take two twice a day" />
-
-
+            app:layout_constraintTop_toBottomOf="@+id/storageLabel" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

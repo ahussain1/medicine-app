@@ -41,19 +41,15 @@ class MainActivity : AppCompatActivity() {
                     val name = document.id
                     val description = document["description"].toString()
                     val howToUse = document["how_to_use"].toString()
-                    val brandNames = document["brand_names"].toString()
                     val sideEffects = document["side_effects"].toString()
+                    val precaution = document["precaution"].toString()
+                    val notes = document["notes"].toString()
+                    val storage = document["storage"].toString()
+
                     val usage = document["usage"].toString()
 
                     Log.d("Test", "4321" + sideEffects)
-                    val drug = Drug(
-                        name,
-                        howToUse,
-                        description,
-                        brandNames,
-                        sideEffects,
-                        usage
-                    )
+                    val drug = Drug(name, description, howToUse, sideEffects, precaution, notes, storage)
                     drugList.add(drug)
                 }
 
