@@ -3,6 +3,7 @@ package com.example.banglapharmacy.Controller
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -25,8 +26,10 @@ class MainActivity : AppCompatActivity() {
     val db = FirebaseFirestore.getInstance()
     lateinit var adapter: DrugRecyclerAdapter
 
+
     companion object {
         val drugList = mutableListOf<Drug>()
+
     }
 
     val filteredList = mutableListOf<Drug>()
