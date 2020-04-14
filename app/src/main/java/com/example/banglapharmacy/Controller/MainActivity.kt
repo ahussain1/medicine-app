@@ -1,18 +1,23 @@
 package com.example.banglapharmacy.Controller
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.View.OnFocusChangeListener
+import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.banglapharmacy.Adapters.DrugRecyclerAdapter
 import com.example.banglapharmacy.Model.Drug
+import com.example.banglapharmacy.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
-import com.example.banglapharmacy.R
-import java.util.*
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -76,8 +81,8 @@ class MainActivity : AppCompatActivity() {
         if (menuItem != null) {
             filteredList.clear()
             val searchView = menuItem.actionView as SearchView
-            searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
 
+            searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return true
                 }
@@ -112,5 +117,6 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         drugListView.layoutManager = layoutManager
         drugListView.setHasFixedSize(true)
+        drugListView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
     }
 }

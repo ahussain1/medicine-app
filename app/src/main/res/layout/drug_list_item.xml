@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/drugName"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -17,6 +17,8 @@
         app:layout_constraintBottom_toTopOf="@+id/drugShortDesc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="sans-serif"
+        android:textColor="#000000"
         tools:text="Cocaine" />
 
     <ImageView
@@ -47,5 +49,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drugName" />
+        app:layout_constraintTop_toBottomOf="@+id/drugName"
+        android:textColor="#616161"
+        android:background="@android:color/transparent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

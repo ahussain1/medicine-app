@@ -8,18 +8,21 @@ import androidx.core.text.HtmlCompat
 import com.example.banglapharmacy.Model.Drug
 import com.example.banglapharmacy.R
 import kotlinx.android.synthetic.main.activity_drug_summary.*
+import kotlin.math.min
 
 class DrugSummaryActivity : AppCompatActivity() {
 
-    val minFontSize = 16
-    val maxFontSize = 26
-
+    var minFontSize = 16f
+    var maxFontSize = 26f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drug_summary)
         populateFields()
+        adjustFont()
+    }
 
+    fun adjustFont() {
         smallerFont.setOnClickListener({
             description.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
             howToUse.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
@@ -39,8 +42,6 @@ class DrugSummaryActivity : AppCompatActivity() {
         })
     }
 
-
-
     fun populateFields() {
         val drug = getIntent().getSerializableExtra("drug") as? Drug
 
@@ -59,8 +60,6 @@ class DrugSummaryActivity : AppCompatActivity() {
             notes.setHtmlText(drug!!.notes)
         }
     }
-
-
 
     fun TextView.setHtmlText(source: String) {
         this.text = HtmlCompat.fromHtml(source, HtmlCompat.FROM_HTML_MODE_LEGACY)
