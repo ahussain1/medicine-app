@@ -11,14 +11,18 @@
         tools:context=".Controller.DrugSummaryActivity">
 
         <TextView
+            android:id="@+id/drugName"
             android:layout_width="231dp"
             android:layout_height="37dp"
-            android:id="@+id/drugName" tools:text="Acetaminophen"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:textColor="#12005e"
-            android:textStyle="bold" android:textSize="22sp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" android:layout_marginTop="24dp"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Acetaminophen" />
 
         <Button
             android:id="@+id/smallerFont"
@@ -26,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="Smaller"
+            android:text="A-"
             app:layout_constraintBottom_toBottomOf="@+id/drugName"
             app:layout_constraintEnd_toStartOf="@+id/biggerFont"
             app:layout_constraintTop_toTopOf="@+id/drugName" />
@@ -37,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:text="Bigger"
+            android:text="A+"
             app:layout_constraintBottom_toBottomOf="@+id/smallerFont"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/smallerFont" />
