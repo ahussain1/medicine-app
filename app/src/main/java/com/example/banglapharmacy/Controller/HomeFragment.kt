@@ -13,17 +13,16 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.Source
 import kotlinx.android.synthetic.main.fragment_home.drugListView
 import kotlin.math.log
 
-class HomeFragment : Fragment(), MenuItem.OnActionExpandListener {
+class HomeFragment : Fragment() {
 
     val db = FirebaseFirestore.getInstance()
-//    lateinit var adapter: DrugRecyclerAdapter
-
+    lateinit var adapter: DrugRecyclerAdapter
 
     companion object {
-        lateinit var adapter: DrugRecyclerAdapter
         val drugList = mutableListOf<Drug>()
         val filteredList = mutableListOf<Drug>()
     }
@@ -36,29 +35,38 @@ class HomeFragment : Fragment(), MenuItem.OnActionExpandListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
+
         return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setViewProperties()
+        setupRecyclerView()
+    }
 
+    fun setupRecyclerView() {
+        if(drugList.isEmpty()) {
             db.collection("Drugs").get().addOnSuccessListener { result ->
-                for (document in result) {
-                    val name = document.id
-                    val description = document["description"].toString()
-                    val howToUse = document["how_to_use"].toString()
-                    val sideEffects = document["side_effects"].toString()
-                    val precaution = document["precaution"].toString()
-                    val notes = document["notes"].toString()
-                    val storage = document["storage"].toString()
+                if (drugList.isEmpty()) {
+                    for (document in result) {
+                        val name = document.id
+                        val description = document["description"].toString()
+                        val howToUse = document["how_to_use"].toString()
+                        val sideEffects = document["side_effects"].toString()
+                        val precaution = document["precaution"].toString()
+                        val notes = document["notes"].toString()
+                        val storage = document["storage"].toString()
 
-                    val usage = document["usage"].toString()
+                        val usage = document["usage"].toString()
 
-                    Log.d("Test", "4321" + sideEffects)
-                    val drug = Drug(name, description, howToUse, sideEffects, precaution, notes, storage)
-                    drugList.add(drug)
+                        Log.d("Test", "4321" + sideEffects)
+                        val drug =
+                            Drug(name, description, howToUse, sideEffects, precaution, notes, storage)
+                        drugList.add(drug)
+                    }
+                    filteredList.addAll(drugList)
                 }
-                filteredList.addAll(drugList)
 
                 adapter = DrugRecyclerAdapter(context, filteredList) { drug ->
                     val drugIntent = Intent(context, DrugSummaryActivity::class.java)
@@ -67,13 +75,18 @@ class HomeFragment : Fragment(), MenuItem.OnActionExpandListener {
                 }
 
                 drugListView.adapter = adapter
-
             }
                 .addOnFailureListener { exception ->
                     Log.d("MyMessage", "Error getting documents: ", exception)
                 }
-
-        setViewProperties()
+        } else {
+            adapter = DrugRecyclerAdapter(context, filteredList) { drug ->
+                val drugIntent = Intent(context, DrugSummaryActivity::class.java)
+                drugIntent.putExtra("drug", drug)
+                startActivity(drugIntent)
+            }
+            drugListView.adapter = adapter
+        }
     }
 
 
@@ -83,7 +96,6 @@ class HomeFragment : Fragment(), MenuItem.OnActionExpandListener {
         val menuItem = menu!!.findItem(R.id.search)
 
         if (menuItem != null) {
-            filteredList.clear()
             val searchView = menuItem.actionView as SearchView
 
             searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
@@ -113,51 +125,22 @@ class HomeFragment : Fragment(), MenuItem.OnActionExpandListener {
                 }
 
             })
-
         }
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-//    override fun onPrepareOptionsMenu(menu: Menu) {
-//        val menuItem = menu!!.findItem(R.id.search)
-//
-//        if (menuItem != null) {
-//            filteredList.clear()
-//            val searchView = menuItem.actionView as SearchView
-//
-//            searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-//                override fun onQueryTextSubmit(query: String?): Boolean {
-//                    return true
-//                }
-//
-//                override fun onQueryTextChange(newText: String?): Boolean {
-//                    if (newText!!.isNotEmpty()) {
-//                        val search = newText.toLowerCase()
-//                        filteredList.clear()
-//
-//                        drugList.forEach{
-//                            if(it.name.toLowerCase().contains(search)) {
-//                                filteredList.add(it)
-//                            }
-//                        }
-//                        adapter.notifyDataSetChanged()
-//                        drugListView.adapter?.notifyDataSetChanged()
-//                    } else {
-//                        filteredList.clear()
-//                        filteredList.addAll(drugList)
-//                        drugListView.adapter?.notifyDataSetChanged()
-//                    }
-//                    return true
-//                }
-//
-//            })
-//
-//        }
-//        super.onPrepareOptionsMenu(menu)
-//    }
+    override fun onDestroy() {
+        super.onDestroy()
+        filteredList.clear()
+        filteredList.addAll(drugList)
+        drugListView.adapter!!.notifyDataSetChanged()
+    }
 
-    fun getAllData(container: ViewGroup?) {
-
+    override fun onPause() {
+        super.onPause()
+        filteredList.clear()
+        filteredList.addAll(drugList)
+        drugListView.adapter!!.notifyDataSetChanged()
     }
 
     fun setViewProperties() {
@@ -166,16 +149,4 @@ class HomeFragment : Fragment(), MenuItem.OnActionExpandListener {
         drugListView.setHasFixedSize(true)
         drugListView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
     }
-
-
-
-    override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
-        return true
-    }
-
-    override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
-        adapter.notifyDataSetChanged()
-        return true
-    }
-
 }

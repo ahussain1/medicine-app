@@ -6,16 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.banglapharmacy.Model.Drug
 import com.example.banglapharmacy.R
+import java.util.ArrayList
 
 
 class DrugRecyclerAdapter(val context: Context?, val drugsList: List<Drug>, val itemClick: (Drug) -> Unit) : RecyclerView.Adapter<DrugRecyclerAdapter.Holder>() {
 
-    private var PRIVATE_MODE = 0
     private val FAVORITES_LIST = "favorites_list"
+
+    internal var filterListResult : List<Drug>
+
+    init {
+        this.filterListResult = drugsList
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.drug_list_item, parent, false)
@@ -30,11 +38,9 @@ class DrugRecyclerAdapter(val context: Context?, val drugsList: List<Drug>, val 
         if (context != null) {
             holder.bindCategory(drugsList[position], context)
         }
-
     }
 
     inner class Holder(itemView: View, val itemClick: (Drug) -> Unit) : RecyclerView.ViewHolder(itemView) {
-
         val drugNameField = itemView.findViewById<TextView>(R.id.drugName)
         val drugShortDescField = itemView.findViewById<TextView>(R.id.drugShortDesc)
         val favoritesIcon = itemView.findViewById<Button>(R.id.favoritesIcon)
@@ -51,7 +57,7 @@ class DrugRecyclerAdapter(val context: Context?, val drugsList: List<Drug>, val 
             }
 
             drugNameField.text = drug.name
-            drugShortDescField.text = drug.description. substring(0, 90)
+            drugShortDescField.text = drug.description. substring(0, 6)
             itemView.setOnClickListener {
                 itemClick(drug)
             }
@@ -70,5 +76,4 @@ class DrugRecyclerAdapter(val context: Context?, val drugsList: List<Drug>, val 
             }
         }
     }
-
 }

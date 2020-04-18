@@ -11,10 +11,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.banglapharmacy.Adapters.DrugRecyclerAdapter
 import com.example.banglapharmacy.Model.Drug
-
 import com.example.banglapharmacy.R
 import kotlinx.android.synthetic.main.fragment_favorites.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class FavoritesFragment : Fragment() {
 
@@ -37,20 +35,21 @@ class FavoritesFragment : Fragment() {
             }
         }
 
-        adapter = DrugRecyclerAdapter(context, favoriteList) { drug ->
-            val drugIntent = Intent(context, DrugSummaryActivity::class.java)
-            drugIntent.putExtra("drug", drug)
-            startActivity(drugIntent)
+        if (favoriteList.isNotEmpty()) {
+            adapter = DrugRecyclerAdapter(context, favoriteList) { drug ->
+                val drugIntent = Intent(context, DrugSummaryActivity::class.java)
+                drugIntent.putExtra("drug", drug)
+                startActivity(drugIntent)
+            }
+
+            favoriteListView.adapter = adapter
+            val layoutManager = LinearLayoutManager(context)
+            favoriteListView.layoutManager = layoutManager
+            favoriteListView.setHasFixedSize(true)
+            favoriteListView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            emptyListText.visibility = View.INVISIBLE
+        } else {
+            favoriteListView.visibility = View.INVISIBLE
         }
-
-        favoriteListView.adapter = adapter
-        val layoutManager = LinearLayoutManager(context)
-        favoriteListView.layoutManager = layoutManager
-        favoriteListView.setHasFixedSize(true)
-        favoriteListView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-
     }
-
-
-
 }
