@@ -1,5 +1,7 @@
 package com.example.banglapharmacy.Controller
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -10,6 +12,7 @@ import com.example.banglapharmacy.R
 import com.google.android.material.navigation.NavigationView.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import java.net.URI
 
 class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
 
@@ -72,6 +75,18 @@ class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
                         .addToBackStack(null)
                         .commit()
                 }
+            R.id.review -> {
+                val i = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.arabyprof.app"))
+                startActivity(i)
+            }
+            R.id.share -> {
+                val shareBody = "You are the body"
+                val shareSub = "You are the subject"
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.putExtra(Intent.EXTRA_SUBJECT, shareBody)
+                intent.putExtra(Intent.EXTRA_TEXT, shareSub)
+                startActivity(Intent.createChooser(intent, "Share  your app"))
+            }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true

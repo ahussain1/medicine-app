@@ -35,7 +35,6 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
-
         return rootView
     }
 
@@ -89,7 +88,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu, menu)
 
@@ -102,6 +100,7 @@ class HomeFragment : Fragment() {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return false
                 }
+
 
                 override fun onQueryTextChange(newText: String?): Boolean {
                     if (newText!!.isNotEmpty()) {
@@ -123,7 +122,6 @@ class HomeFragment : Fragment() {
                     }
                     return false
                 }
-
             })
         }
         super.onCreateOptionsMenu(menu, inflater)
