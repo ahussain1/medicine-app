@@ -100,8 +100,7 @@ class HomeFragment : Fragment() {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return false
                 }
-
-
+                
                 override fun onQueryTextChange(newText: String?): Boolean {
                     if (newText!!.isNotEmpty()) {
                         val search = newText.toLowerCase()
@@ -112,7 +111,6 @@ class HomeFragment : Fragment() {
                                 filteredList.add(it)
                             }
                         }
-                        Log.d("onQueryTextChange", filteredList.size.toString());
 
                         drugListView.adapter!!.notifyDataSetChanged()
                     } else {
