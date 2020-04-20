@@ -13,8 +13,11 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.firestore.Source
-import kotlinx.android.synthetic.main.fragment_home.drugListView
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.math.log
 
 class HomeFragment : Fragment() {
@@ -35,6 +38,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
+
         return rootView
     }
 
@@ -42,6 +46,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setViewProperties()
         setupRecyclerView()
+        MobileAds.initialize(activity) {}
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 
     fun setupRecyclerView() {
@@ -96,11 +103,22 @@ class HomeFragment : Fragment() {
         if (menuItem != null) {
             val searchView = menuItem.actionView as SearchView
 
+            searchView.setOnQueryTextFocusChangeListener { _ , hasFocus ->
+                if (hasFocus) {
+                    Log.d("MyMessage", "testlab123")
+                } else {
+                    searchView.setQuery("", false)
+                    filteredList.clear()
+                    filteredList.addAll(drugList)
+                    drugListView.adapter!!.notifyDataSetChanged()
+                }
+            }
+
             searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return false
                 }
-                
+
                 override fun onQueryTextChange(newText: String?): Boolean {
                     if (newText!!.isNotEmpty()) {
                         val search = newText.toLowerCase()

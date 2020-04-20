@@ -57,7 +57,7 @@ class DrugRecyclerAdapter(val context: Context?, val drugsList: List<Drug>, val 
             }
 
             drugNameField.text = drug.name
-            drugShortDescField.text = drug.description. substring(0, 60)
+            drugShortDescField.text = drug.description. substring(0, 90)
             itemView.setOnClickListener {
                 itemClick(drug)
             }

@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.banglapharmacy.Adapters.DrugRecyclerAdapter
 import com.example.banglapharmacy.Model.Drug
 import com.example.banglapharmacy.R
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.fragment_favorites.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class FavoritesFragment : Fragment() {
 
@@ -51,5 +54,13 @@ class FavoritesFragment : Fragment() {
         } else {
             favoriteListView.visibility = View.INVISIBLE
         }
+
+        showBannerAd();
+    }
+
+    fun showBannerAd() {
+        MobileAds.initialize(activity) {}
+        val adRequest = AdRequest.Builder().build()
+        adView2.loadAd(adRequest)
     }
 }

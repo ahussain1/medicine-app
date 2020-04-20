@@ -20,6 +20,7 @@ class DrugSummaryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_drug_summary)
         populateFields()
         adjustFont()
+
     }
 
     fun adjustFont() {

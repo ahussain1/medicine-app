@@ -5,4 +5,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="admob_app_id">ca-app-pub-9309168388742370~6645478136</string>
+    <string name="admob_banner_ad">ca-app-pub-9309168388742370/7817075102</string>
 </resources>
