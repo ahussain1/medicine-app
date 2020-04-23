@@ -15,10 +15,8 @@ import com.example.banglapharmacy.R
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.fragment_favorites.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class FavoritesFragment : Fragment() {
-
     lateinit var adapter: DrugRecyclerAdapter
     private val FAVORITES_LIST = "favorites_list"
     private val favoriteList = mutableListOf<Drug>()
@@ -54,8 +52,7 @@ class FavoritesFragment : Fragment() {
         } else {
             favoriteListView.visibility = View.INVISIBLE
         }
-
-        showBannerAd();
+        showBannerAd()
     }
 
     fun showBannerAd() {
